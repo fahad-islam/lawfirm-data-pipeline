@@ -53,18 +53,7 @@ cp ".env example" .env
 
 ## ⚙️ Configuration
 
-Create a `.env` file based on `.env example` with the following variables:
-```env
-# Database
-DATABASE_URL="postgresql://user:password@localhost:5432/lawfirm_pipeline"
-
-# Giighire CRM
-GIIGHIRE_API_KEY=your_api_key_here
-GIIGHIRE_API_URL=https://api.giighire.com
-
-# Google Places (if using API)
-GOOGLE_PLACES_API_KEY=your_google_api_key
-```
+Create a `.env` file based on `.env example`.
 
 ## 🗄️ Database Setup
 ```bash
