@@ -1,0 +1,14 @@
+# --- Database connection URLs ---
+# General Storage bucket
+DATABASE_URL=postgresql://postgres:mypassword@localhost:5432/worker
+# Cluster Storage buckets
+SyncCrm_DATABASE_URL=postgresql://postgres:mypassword@localhost:5432/synccrm
+PlaceWebsiteScraper_DATABASE_URL=postgresql://postgres:mypassword@localhost:5432/placewebsitescraper
+PlacesLocator_DATABASE_URL=postgresql://postgres:mypassword@localhost:5432/placeslocator
+
+# Gemini API Key
+GEMINI_API_KEY=...
+
+# Giighire CRM Credentials
+GIIGHIRE_EMAIL=...
+GIIGHIRE_PASSWORD=...

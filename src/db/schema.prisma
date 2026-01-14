@@ -1,0 +1,105 @@
+generator client {
+  provider = "prisma-client"
+  output   = "./client"
+}
+
+generator effect {
+  provider         = "effect-prisma-generator"
+  output           = "./client/effect.ts"
+  clientImportPath = "./client.js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model GooglePlaceUrlToScrape {
+  id String @id @default(cuid())
+
+  url    String   @unique
+
+  location     String?
+
+  status Boolean?
+  notes  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model PlaceEntry {
+  id String @id @default(cuid())
+
+  name      String?
+  url       String  @unique
+  address   String?
+  telephone String?
+
+  location     String?
+
+  status Boolean?
+  notes  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt()
+}
+
+model Company {
+  id String @id @default(cuid())
+
+  name         String  @unique
+  websiteUrl   String
+  emailAddress String?
+  phoneNumber  String?
+  address      String?
+  industry     String?
+  location     String?
+
+  servicesOffered FirmService[]
+
+  crmSyncEvent CrmSyncEvent?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model FirmService {
+  id String @id @default(cuid())
+
+  name String @unique
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  companies Company[]
+}
+
+model CrmSyncEvent {
+  id String @id @default(cuid())
+
+  companyId String  @unique
+  company   Company @relation(fields: [companyId], references: [id])
+
+  status Boolean?
+  notes  String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Notification {
+  id String @id @default(cuid())
+
+  message     String
+  metadata    Json?
+  serviceName EnumServiceName
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+enum EnumServiceName {
+  Places_Locator
+  Website_Content_Scrapper
+  CRM_Sync
+}
