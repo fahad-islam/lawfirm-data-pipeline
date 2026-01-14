@@ -207,8 +207,6 @@ For issues, questions, or contributions:
 
 **Built with ⚡ by [Fahad Islam](https://github.com/fahad-islam)**
 
-**Contributors**: [Usama](https://github.com/Usamascode)
-
 ---
 
 ### Performance Notes
